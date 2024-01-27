@@ -45,7 +45,7 @@ class IncluirPedidoUseCaseTest {
         // Assert
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatus());
-        assertEquals(2, response.getData().posicaoFila);
+        assertEquals(2, response.getData().getPosicaoFila());
         Mockito.verify(gateway, Mockito.times(1)).incluirPedido(Mockito.any());
     }
 
