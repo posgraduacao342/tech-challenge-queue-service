@@ -37,7 +37,7 @@ class PedidoGatewayTest {
     }
 
     @Test
-    void testBuscarPedidos() {
+    void testBuscarPedidos_returnSuccessResult() {
         // Arrange
         var pedidos = PedidoMongoEntityBuilder.buildList();
         Mockito.when(repository.findAll())
@@ -54,7 +54,7 @@ class PedidoGatewayTest {
     }
 
     @Test
-    void testBuscarPedidoPorStatus() {
+    void testBuscarPedidoPorStatus_returnSuccessResult() {
         // Arrange
         var status = Arrays.asList(StatusPedido.RECEBIDO, StatusPedido.EM_PREPARACAO, StatusPedido.PRONTO);
         var data = LocalDate.of(2024, 1, 24);
@@ -75,7 +75,7 @@ class PedidoGatewayTest {
     }
 
     @Test
-    void testIncluirPedido() {
+    void testIncluirPedido_returnSuccessResult() {
         // Arrange
         var pedido = PedidoBuilder.build();
         var pedidoEntity = new PedidoMongoEntity(pedido);
@@ -90,7 +90,7 @@ class PedidoGatewayTest {
     }
 
     @Test
-    void testAtualizarStatusPedido() {
+    void testAtualizarStatusPedido_returnSuccessResult() {
         // Arrange
         var pedido = PedidoMongoEntityBuilder.build();
         var status = StatusPedido.FINALIZADO;
@@ -104,7 +104,7 @@ class PedidoGatewayTest {
     }
 
     @Test
-    void testAtualizarStatusPedidoNotFound() {
+    void testAtualizarStatusPedido_whenPedidoNotFound_throwsNotFoundException() {
         // Arrange
         UUID id = UUID.randomUUID();
         StatusPedido status = StatusPedido.FINALIZADO;
@@ -115,7 +115,7 @@ class PedidoGatewayTest {
     }
 
     @Test
-    void testPedidoExiste() {
+    void testPedidoExiste_returnSuccessResult() {
         // Arrange
         var id = UUID.randomUUID();
         Mockito.when(repository.existsById(id)).thenReturn(true);
@@ -128,7 +128,7 @@ class PedidoGatewayTest {
     }
 
     @Test
-    void testUltimaPosicaoFilaPorData() {
+    void testUltimaPosicaoFilaPorData_returnSuccessResult() {
         // Arrange
         var data = LocalDate.of(2024, 1, 24);
         var pedido = PedidoMongoEntityBuilder.build();
@@ -144,5 +144,23 @@ class PedidoGatewayTest {
         // Assert
         assertNotNull(result);
         assertEquals(pedido.getPosicaoFila(), result);
+    }
+
+    @Test
+    void testUltimaPosicaoFilaPorData_returnSuccessResult0() {
+        // Arrange
+        var data = LocalDate.of(2024, 1, 24);
+        Mockito.when(repository.findTopByDataRecebimentoBetweenOrderByPosicaoFila(
+                        LocalDateTime.of(2024, 1, 24,0,0,0,0),
+                        LocalDateTime.of(2024, 1, 25,0,0,0,0))
+                )
+                .thenReturn(Optional.empty());
+
+        // Act
+        Long result = gateway.ultimaPosicaoFilaPorData(data);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(0, result);
     }
 }
