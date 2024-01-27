@@ -8,11 +8,9 @@ import api.techchallenge.queue.domain.ports.PedidoGatewayPort;
 import api.techchallenge.queue.infrastructure.entities.PedidoMongoEntity;
 import api.techchallenge.queue.infrastructure.repositories.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
