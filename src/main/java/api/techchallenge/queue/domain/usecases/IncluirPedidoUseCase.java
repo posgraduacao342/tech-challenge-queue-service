@@ -4,8 +4,6 @@ import api.techchallenge.queue.domain.dtos.request.IncluirPedidoRequest;
 import api.techchallenge.queue.domain.dtos.response.IncluirPedidoResponse;
 import api.techchallenge.queue.domain.entities.Pedido;
 import api.techchallenge.queue.domain.entities.UseCaseResponse;
-import api.techchallenge.queue.domain.entities.UseCaseResponseNoData;
-import api.techchallenge.queue.domain.ports.UseCaseOnlyRequestPort;
 import api.techchallenge.queue.domain.ports.UseCasePort;
 import api.techchallenge.queue.infrastructure.gateways.PedidoGateway;
 import org.springframework.beans.factory.annotation.Autowired;
