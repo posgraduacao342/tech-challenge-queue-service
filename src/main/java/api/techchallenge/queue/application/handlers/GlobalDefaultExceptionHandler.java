@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class GlobalDefaultExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(NotFoundException.class)
-    private ResponseEntity<ProblemDetail> handleNotFoundException(NotFoundException ex) {
+    protected ResponseEntity<ProblemDetail> handleNotFoundException(NotFoundException ex) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
         problemDetail.setTitle(HttpStatus.NOT_FOUND.getReasonPhrase());
 
