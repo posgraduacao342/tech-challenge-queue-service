@@ -5,7 +5,8 @@ import api.techchallenge.queue.domain.entities.Pedido;
 import api.techchallenge.queue.domain.enums.StatusPedido;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
@@ -13,9 +14,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-@Data
 @Document(collection = "pedidos")
 @AllArgsConstructor
+@Getter
+@Setter
 @Builder
 public class PedidoMongoEntity {
     @MongoId
