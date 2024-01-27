@@ -3,9 +3,10 @@ package api.techchallenge.queue.infrastructure.entities;
 import api.techchallenge.queue.domain.entities.Item;
 import api.techchallenge.queue.domain.entities.Pedido;
 import api.techchallenge.queue.domain.enums.StatusPedido;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
@@ -16,6 +17,8 @@ import java.util.UUID;
 @Data
 @Document(collection = "pedidos")
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class PedidoMongoEntity {
     @MongoId
     private UUID id;
