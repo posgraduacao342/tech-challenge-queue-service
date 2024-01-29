@@ -1,8 +1,9 @@
-package api.techchallenge.queue.domain.usecases;
+package api.techchallenge.queue.unittests.domain.usecases;
 
 import api.techchallenge.queue.builders.PedidoBuilder;
 import api.techchallenge.queue.domain.entities.Pedido;
 import api.techchallenge.queue.domain.entities.UseCaseResponse;
+import api.techchallenge.queue.domain.usecases.BuscarPedidosUseCase;
 import api.techchallenge.queue.infrastructure.gateways.PedidoGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,13 +17,13 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class BuscarFilaDePedidosUseCaseTest {
+class BuscarPedidosUseCaseTest {
 
     @Mock
     private PedidoGateway gateway;
 
     @InjectMocks
-    private BuscarFilaDePedidosUseCase useCase;
+    private BuscarPedidosUseCase useCase;
 
     @BeforeEach
     void setUp() {
@@ -33,7 +34,7 @@ class BuscarFilaDePedidosUseCaseTest {
     void testExecute() {
         // Arrange
         var pedidos = PedidoBuilder.buildList();
-        Mockito.when(gateway.buscarPedidoPorStatus(Mockito.any(), Mockito.any())).thenReturn(pedidos);
+        Mockito.when(gateway.buscarPedidos()).thenReturn(pedidos);
 
         // Act
         UseCaseResponse<List<Pedido>> response = useCase.execute();
@@ -41,6 +42,6 @@ class BuscarFilaDePedidosUseCaseTest {
         // Assert
         assertNotNull(response);
         assertEquals(pedidos, response.getData());
-        Mockito.verify(gateway, Mockito.times(1)).buscarPedidoPorStatus(Mockito.any(), Mockito.any());
+        Mockito.verify(gateway, Mockito.times(1)).buscarPedidos();
     }
 }

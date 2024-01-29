@@ -1,7 +1,8 @@
-package api.techchallenge.queue.domain.usecases;
+package api.techchallenge.queue.unittests.domain.usecases;
 import api.techchallenge.queue.domain.dtos.request.AtualizarStatusPedidoRequest;
 import api.techchallenge.queue.domain.entities.UseCaseResponseNoData;
 import api.techchallenge.queue.domain.enums.StatusPedido;
+import api.techchallenge.queue.domain.usecases.AtualizarStatusPedidoUseCase;
 import api.techchallenge.queue.infrastructure.gateways.PedidoGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

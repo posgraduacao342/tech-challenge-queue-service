@@ -12,8 +12,6 @@ import java.util.UUID;
 
 @Repository
 public interface PedidoRepository extends MongoRepository<PedidoMongoEntity, UUID> {
-    List<PedidoMongoEntity> findAllByStatus(StatusPedido status);
-    Long countByDataRecebimento(LocalDateTime data);
     List<PedidoMongoEntity> findAllByStatusInAndDataRecebimentoBetweenOrderByPosicaoFila(List<StatusPedido> status,LocalDateTime dataInicial, LocalDateTime dataFinal);
     Optional<PedidoMongoEntity> findTopByDataRecebimentoBetweenOrderByPosicaoFila(LocalDateTime dataInicial, LocalDateTime dataFinal);
 }

@@ -3,16 +3,14 @@ package api.techchallenge.queue.domain.entities;
 import api.techchallenge.queue.domain.dtos.request.IncluirPedidoRequest;
 import api.techchallenge.queue.domain.enums.StatusPedido;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
 @Builder
-@Getter
-@Setter
+@Data
 public class Pedido {
     private UUID id;
     private LocalDateTime dataRecebimento;

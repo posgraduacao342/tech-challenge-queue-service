@@ -1,5 +1,6 @@
-package api.techchallenge.queue.application.handlers;
+package api.techchallenge.queue.unittests.application.handlers;
 
+import api.techchallenge.queue.application.handlers.GlobalDefaultExceptionHandler;
 import api.techchallenge.queue.domain.exceptions.NotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;

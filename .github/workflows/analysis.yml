@@ -26,6 +26,8 @@ jobs:
         with:
           java-version: 17
           distribution: 'zulu' # Alternative distribution options are available.
+
+
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
@@ -41,6 +43,8 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
           
       - name: Build and analyze
+        with:
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

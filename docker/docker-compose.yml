@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  account-service:
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+    image: api
+    container_name: account-service
+    ports:
+      - 8080:8080
+    restart: always
+    depends_on:
+      - mongodb
+    env_file:
+      - ../.env
+    networks:
+      - mynetwork
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - '27017:27017'
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge

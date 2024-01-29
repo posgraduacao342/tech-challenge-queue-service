@@ -2,10 +2,12 @@ package api.techchallenge.queue.domain.entities;
 
 import api.techchallenge.queue.domain.enums.CategoriaProduto;
 import lombok.Builder;
+import lombok.Data;
 
 import java.util.UUID;
 
 @Builder
+@Data
 public class Item {
     private UUID id;
     private UUID idProduto;

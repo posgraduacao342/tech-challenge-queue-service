@@ -1,9 +1,10 @@
-package api.techchallenge.queue.domain.usecases;
+package api.techchallenge.queue.unittests.domain.usecases;
 
 import api.techchallenge.queue.builders.IncluirPedidoRequestBuilder;
 import api.techchallenge.queue.domain.dtos.request.IncluirPedidoRequest;
 import api.techchallenge.queue.domain.dtos.response.IncluirPedidoResponse;
 import api.techchallenge.queue.domain.entities.UseCaseResponse;
+import api.techchallenge.queue.domain.usecases.IncluirPedidoUseCase;
 import api.techchallenge.queue.infrastructure.gateways.PedidoGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,8 +13,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
-
-import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tech-challenge-queue
+  labels:
+    app: tech-challenge-queue
+spec:
+  template:
+    metadata:
+      name: tech-challenge-queue
+      labels:
+        app: tech-challenge-queue
+    spec:
+      containers:
+        - name: tech-challenge-queue-api
+          image: posgraduacao342/tech-challenge-queue-service:1.0.0
+          ports:
+            - containerPort: 8080
+#          livenessProbe:
+#            httpGet:
+#              path: /health-check
+#              port: 8080
+#            initialDelaySeconds: 30
+#            periodSeconds: 40
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: "512Mi"
+            requests:
+              cpu: "0.2"
+              memory: "256Mi"
+          env:
+            - name: MONGODB_URI
+              value: mongodb+srv://posgraduacao342:7QgYPntEZxPHVhZ9@tech-challenge-cluster.7a3bbgd.mongodb.net/tech-challenge?retryWrites=true&w=majority
+
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tech-challenge-queue

@@ -1,4 +1,4 @@
-package api.techchallenge.queue.infrastructure.gateway;
+package api.techchallenge.queue.unittests.infrastructure.gateway;
 
 import api.techchallenge.queue.builders.PedidoBuilder;
 import api.techchallenge.queue.builders.PedidoMongoEntityBuilder;

@@ -1,10 +1,10 @@
 package api.techchallenge.queue.domain.dtos.response;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 
 @AllArgsConstructor
-@Getter
+@Data
 public class IncluirPedidoResponse {
     private Long posicaoFila;
 }

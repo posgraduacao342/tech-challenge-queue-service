@@ -1,9 +1,9 @@
 package api.techchallenge.queue.domain.entities;
 
-import lombok.Getter;
+import lombok.Data;
 import org.springframework.http.HttpStatus;
 
-@Getter
+@Data
 public class UseCaseResponse<T>  extends UseCaseResponseNoData{
     private T data;
 

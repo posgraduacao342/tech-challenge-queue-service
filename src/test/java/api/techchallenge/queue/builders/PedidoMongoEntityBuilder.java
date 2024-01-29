@@ -1,6 +1,5 @@
 package api.techchallenge.queue.builders;
 
-import api.techchallenge.queue.domain.entities.Pedido;
 import api.techchallenge.queue.domain.enums.StatusPedido;
 import api.techchallenge.queue.infrastructure.entities.PedidoMongoEntity;
 

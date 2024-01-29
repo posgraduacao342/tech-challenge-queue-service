@@ -13,6 +13,7 @@ import java.util.UUID;
 
 @Document(collection = "pedidos")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
