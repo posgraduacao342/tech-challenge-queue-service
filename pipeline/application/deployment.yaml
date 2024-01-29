@@ -13,15 +13,9 @@ spec:
     spec:
       containers:
         - name: tech-challenge-queue-api
-          image: posgraduacao342/tech-challenge-queue-service:1.0.0
+          image: 637423603914.dkr.ecr.us-east-1.amazonaws.com/queue-service:latest
           ports:
             - containerPort: 8080
-#          livenessProbe:
-#            httpGet:
-#              path: /health-check
-#              port: 8080
-#            initialDelaySeconds: 30
-#            periodSeconds: 40
           resources:
             limits:
               cpu: "0.5"
@@ -31,9 +25,11 @@ spec:
               memory: "256Mi"
           env:
             - name: MONGODB_URI
-              value: mongodb+srv://posgraduacao342:7QgYPntEZxPHVhZ9@tech-challenge-cluster.7a3bbgd.mongodb.net/tech-challenge?retryWrites=true&w=majority
-
-  replicas: 2
+              valueFrom:
+                secretKeyRef:
+                  name: tech-challenge-queue-service
+                  key: MONGODB_URI
+  replicas: 3
   selector:
     matchLabels:
       app: tech-challenge-queue
