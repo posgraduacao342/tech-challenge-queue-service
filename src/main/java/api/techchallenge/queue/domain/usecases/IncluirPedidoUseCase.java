@@ -5,9 +5,11 @@ import api.techchallenge.queue.domain.dtos.response.IncluirPedidoResponse;
 import api.techchallenge.queue.domain.entities.Pedido;
 import api.techchallenge.queue.domain.entities.UseCaseResponse;
 import api.techchallenge.queue.domain.ports.UseCasePort;
-import api.techchallenge.queue.infrastructure.gateways.PedidoGateway;
+import api.techchallenge.queue.infrastructure.gateways.database.PedidoGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+
+import java.security.InvalidParameterException;
 
 public class IncluirPedidoUseCase implements UseCasePort<IncluirPedidoResponse, IncluirPedidoRequest> {
     private final PedidoGateway gateway;
@@ -19,7 +21,7 @@ public class IncluirPedidoUseCase implements UseCasePort<IncluirPedidoResponse, 
 
     public UseCaseResponse<IncluirPedidoResponse> execute(IncluirPedidoRequest request){
         if (gateway.pedidoExiste(request.getId())){
-            return new UseCaseResponse<>(HttpStatus.BAD_REQUEST, "Pedido já existe.");
+            throw new InvalidParameterException("Pedido já existe");
         }
         var pedido = new Pedido(request);
         var posicaoFila = gateway.ultimaPosicaoFilaPorData(pedido.getDataRecebimento().toLocalDate()) + 1;

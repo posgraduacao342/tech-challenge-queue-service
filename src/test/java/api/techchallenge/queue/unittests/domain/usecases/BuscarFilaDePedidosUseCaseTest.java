@@ -4,7 +4,7 @@ import api.techchallenge.queue.builders.PedidoBuilder;
 import api.techchallenge.queue.domain.entities.Pedido;
 import api.techchallenge.queue.domain.entities.UseCaseResponse;
 import api.techchallenge.queue.domain.usecases.BuscarFilaDePedidosUseCase;
-import api.techchallenge.queue.infrastructure.gateways.PedidoGateway;
+import api.techchallenge.queue.infrastructure.gateways.database.PedidoGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

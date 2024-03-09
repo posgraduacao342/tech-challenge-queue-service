@@ -3,7 +3,7 @@ package api.techchallenge.queue.domain.usecases;
 import api.techchallenge.queue.domain.entities.Pedido;
 import api.techchallenge.queue.domain.entities.UseCaseResponse;
 import api.techchallenge.queue.domain.ports.UseCaseOnlyResponsePort;
-import api.techchallenge.queue.infrastructure.gateways.PedidoGateway;
+import api.techchallenge.queue.infrastructure.gateways.database.PedidoGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

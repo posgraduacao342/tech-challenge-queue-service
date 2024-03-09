@@ -6,30 +6,29 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 @Builder
 @Data
 public class Pedido {
     private UUID id;
+    private UUID clienteId;
     private LocalDateTime dataRecebimento;
-    private List<Item> itens;
     private StatusPedido status;
     private Long posicaoFila;
 
-    public Pedido(UUID id, LocalDateTime dataRecebimento, List<Item> itens, StatusPedido status, Long posicaoFila){
+    public Pedido(UUID id, UUID clienteId, LocalDateTime dataRecebimento, StatusPedido status, Long posicaoFila){
         this.id = id;
+        this.clienteId = clienteId;
         this.dataRecebimento = dataRecebimento;
-        this.itens = itens;
         this.status = status;
         this.posicaoFila = posicaoFila;
     }
 
     public Pedido(IncluirPedidoRequest request){
         id = request.getId();
+        clienteId = request.getIdCliente();
         dataRecebimento = LocalDateTime.now();
-        itens = request.getItens();
         status = StatusPedido.RECEBIDO;
     }
 }

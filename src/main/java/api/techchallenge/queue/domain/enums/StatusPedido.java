@@ -8,6 +8,7 @@ public enum StatusPedido {
 
     public static List<StatusPedido> statusAtivos(){
         var statusAtivos = new ArrayList<StatusPedido>();
+
         statusAtivos.add(RECEBIDO);
         statusAtivos.add(EM_PREPARACAO);
         statusAtivos.add(PRONTO);

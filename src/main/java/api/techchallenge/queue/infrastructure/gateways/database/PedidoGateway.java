@@ -1,4 +1,4 @@
-package api.techchallenge.queue.infrastructure.gateways;
+package api.techchallenge.queue.infrastructure.gateways.database;
 
 import api.techchallenge.queue.application.mappers.PedidoMapper;
 import api.techchallenge.queue.domain.entities.Pedido;
@@ -22,10 +22,19 @@ public class PedidoGateway implements PedidoGatewayPort {
     public PedidoGateway(PedidoRepository repository) {
         this.repository = repository;
     }
+
     public List<Pedido> buscarPedidos(){
         return PedidoMapper.toDomainList(
             repository.findAll()
         );
+    }
+
+    public Pedido buscarPorId(UUID idPedido){
+        var pedido = repository.findById(idPedido);
+        if (pedido.isEmpty()){
+            throw new NotFoundException("Pedido não encontrado");
+        }
+        return pedido.get().toDomain();
     }
 
     public List<Pedido> buscarPedidoPorStatus(List<StatusPedido> status, LocalDate data){
@@ -56,7 +65,7 @@ public class PedidoGateway implements PedidoGatewayPort {
     public Long ultimaPosicaoFilaPorData(LocalDate data) {
         var dataInicial = data.atTime(0,0,0);
         var dataFinal = data.atTime(0,0,0).plusDays(1);
-        var pedido = repository.findTopByDataRecebimentoBetweenOrderByPosicaoFila(dataInicial, dataFinal);
+        var pedido = repository.findTopByDataRecebimentoBetweenOrderByPosicaoFilaDesc(dataInicial, dataFinal);
         return pedido.isPresent() ? pedido.get().getPosicaoFila() : 0;
     }
 }

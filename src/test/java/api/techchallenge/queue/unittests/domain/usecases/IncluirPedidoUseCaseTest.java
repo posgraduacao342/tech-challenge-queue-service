@@ -5,7 +5,7 @@ import api.techchallenge.queue.domain.dtos.request.IncluirPedidoRequest;
 import api.techchallenge.queue.domain.dtos.response.IncluirPedidoResponse;
 import api.techchallenge.queue.domain.entities.UseCaseResponse;
 import api.techchallenge.queue.domain.usecases.IncluirPedidoUseCase;
-import api.techchallenge.queue.infrastructure.gateways.PedidoGateway;
+import api.techchallenge.queue.infrastructure.gateways.database.PedidoGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

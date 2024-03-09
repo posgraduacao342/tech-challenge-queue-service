@@ -1,10 +1,12 @@
 package api.techchallenge.queue.application.config;
 
+import api.techchallenge.queue.domain.ports.ClienteGatewayPort;
+import api.techchallenge.queue.domain.ports.out.EnviarEmailQueueOUTPort;
 import api.techchallenge.queue.domain.usecases.AtualizarStatusPedidoUseCase;
 import api.techchallenge.queue.domain.usecases.BuscarFilaDePedidosUseCase;
 import api.techchallenge.queue.domain.usecases.BuscarPedidosUseCase;
 import api.techchallenge.queue.domain.usecases.IncluirPedidoUseCase;
-import api.techchallenge.queue.infrastructure.gateways.PedidoGateway;
+import api.techchallenge.queue.infrastructure.gateways.database.PedidoGateway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -23,7 +25,7 @@ public class UseCaseConfig {
         return new IncluirPedidoUseCase(pedidoGateway);
     }
     @Bean
-    public AtualizarStatusPedidoUseCase atualizarStatusPedidoUseCaseConfig(PedidoGateway pedidoGateway){
-        return new AtualizarStatusPedidoUseCase(pedidoGateway);
+    public AtualizarStatusPedidoUseCase atualizarStatusPedidoUseCaseConfig(PedidoGateway gateway, EnviarEmailQueueOUTPort sendEmailQueueGateway, ClienteGatewayPort clienteGateway){
+        return new AtualizarStatusPedidoUseCase(gateway, sendEmailQueueGateway, clienteGateway);
     }
 }

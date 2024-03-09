@@ -6,6 +6,7 @@ import api.techchallenge.queue.domain.entities.Pedido;
 import api.techchallenge.queue.domain.entities.UseCaseResponse;
 import api.techchallenge.queue.domain.entities.UseCaseResponseNoData;
 import api.techchallenge.queue.domain.enums.StatusPedido;
+import api.techchallenge.queue.domain.ports.ClienteGatewayPort;
 import api.techchallenge.queue.domain.usecases.AtualizarStatusPedidoUseCase;
 import api.techchallenge.queue.domain.usecases.BuscarFilaDePedidosUseCase;
 import api.techchallenge.queue.domain.usecases.BuscarPedidosUseCase;
@@ -25,6 +26,13 @@ public class PedidoController {
     private final BuscarFilaDePedidosUseCase buscarFilaDePedidosUseCase;
     private final IncluirPedidoUseCase incluirPedidoUseCase;
     private final AtualizarStatusPedidoUseCase atualizarStatusPedidoUseCase;
+    private final ClienteGatewayPort clienteGateway;
+
+    @GetMapping("/testeCliente")
+    public ResponseEntity<UseCaseResponseNoData> testarCliente() {
+        var response = clienteGateway.buscarClientePorId(UUID.fromString("8ed242f4-91f8-47c1-8140-25b9f335abf6")).block();
+        return new ResponseEntity<>(new UseCaseResponseNoData().getStatus());
+    }
 
     @GetMapping
     public ResponseEntity<UseCaseResponse<List<Pedido>>> buscarPedidos() {

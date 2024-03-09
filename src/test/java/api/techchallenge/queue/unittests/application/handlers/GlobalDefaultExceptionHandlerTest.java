@@ -5,7 +5,6 @@ import api.techchallenge.queue.domain.exceptions.NotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.context.request.WebRequest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

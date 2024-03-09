@@ -12,7 +12,6 @@ public class PedidoMongoEntityBuilder {
     public static PedidoMongoEntity build(long posicaoFila){
         return PedidoMongoEntity.builder()
                 .id(UUID.randomUUID())
-                .itens(ItemBuilder.buildList())
                 .dataRecebimento(LocalDateTime.now())
                 .posicaoFila(posicaoFila)
                 .status(StatusPedido.EM_PREPARACAO)
