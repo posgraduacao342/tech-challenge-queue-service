@@ -36,6 +36,7 @@ public class AtualizarStatusPedidoUseCase implements UseCaseOnlyRequestPort<Atua
                         if(!cliente.getEmail().isEmpty()){
                             String assunto;
                             String texto;
+
                             switch(request.getStatus()){
                                 case EM_PREPARACAO:
                                     assunto = "Seu pedido está em preparação";
