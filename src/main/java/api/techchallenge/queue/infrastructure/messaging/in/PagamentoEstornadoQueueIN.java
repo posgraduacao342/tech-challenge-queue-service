@@ -32,7 +32,7 @@ public class PagamentoEstornadoQueueIN implements PagamentoAprovadoQueueINPort {
 
     private final Gson gson = new Gson();
 
-    @RabbitListener(queues = "fila_pagamento_estornado")
+    @RabbitListener(queues = "queue_pagamento_estornado")
     @Override
     public void receive(@Payload String message) throws InvalidParameterException, NotFoundException {
         try {
