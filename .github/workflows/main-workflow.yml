@@ -69,7 +69,7 @@ jobs:
 
       - name: Push Docker Image to ECR
         run: |
-          docker push 637423603914.dkr.ecr.us-east-1.amazonaws.com/queue-service:latest
+          docker push ${{ secrets.ECR_URL }}/queue-service:latest
 
   deploy:
     name: Deploy to Kubernetes
