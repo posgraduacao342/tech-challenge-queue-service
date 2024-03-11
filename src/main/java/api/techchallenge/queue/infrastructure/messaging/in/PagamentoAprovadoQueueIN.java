@@ -31,7 +31,7 @@ public class PagamentoAprovadoQueueIN implements PagamentoAprovadoQueueINPort {
 
     private final Gson gson = new Gson();
 
-    @RabbitListener(queues = "fila_pagamento_aprovado")
+    @RabbitListener(queues = "queue_pagamento_aprovado")
     @Override
     public void receive(@Payload String message){
         try {

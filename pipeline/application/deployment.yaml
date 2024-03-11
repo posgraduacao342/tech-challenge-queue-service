@@ -24,12 +24,37 @@ spec:
               cpu: "0.2"
               memory: "256Mi"
           env:
+            - name: HTTP_SOURCE_ACCOUNT
+              valueFrom:
+                secretKeyRef:
+                  name: tech-challenge-queue-secret
+                  key: HTTP_SOURCE_ACCOUNT
             - name: MONGODB_URI
               valueFrom:
                 secretKeyRef:
-                  name: tech-challenge-queue-service
+                  name: tech-challenge-queue-secret
                   key: MONGODB_URI
-  replicas: 3
+            - name: RMQ_URI
+              valueFrom:
+                secretKeyRef:
+                  name: tech-challenge-queue-secret
+                  key: RMQ_URI
+            - name: RMQ_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: tech-challenge-queue-secret
+                  key: RMQ_PORT
+            - name: RMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: tech-challenge-queue-secret
+                  key: RMQ_USER
+            - name: RMQ_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: tech-challenge-queue-secret
+                  key: RMQ_PASS
+  replicas: 2
   selector:
     matchLabels:
       app: tech-challenge-queue
