@@ -3,6 +3,7 @@ package api.techchallenge.queue.infrastructure.gateways.api;
 import api.techchallenge.queue.domain.entities.Cliente;
 import api.techchallenge.queue.domain.ports.ClienteGatewayPort;
 import api.techchallenge.queue.infrastructure.proxies.HttpProxy;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import java.text.MessageFormat;
 import java.util.UUID;
 
 @Component
+@AllArgsConstructor
 public class ClienteGateway implements ClienteGatewayPort {
     private final HttpProxy<Cliente> httpProxy;
 
