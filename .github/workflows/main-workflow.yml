@@ -64,12 +64,12 @@ jobs:
       - name: Build Docker Image
         id: build-image
         run: |
-          docker build -t ${{ secrets.ECR_URL }}/queue-service:latest -f Dockerfile .
-          docker tag ${{ secrets.ECR_URL }}/queue-service:latest ${{ secrets.ECR_URL }}/queue-service:latest
+          docker build -t ${{ secrets.ECR_URL }}:latest -f Dockerfile .
+          docker tag ${{ secrets.ECR_URL }}:latest ${{ secrets.ECR_URL }}:latest
 
       - name: Push Docker Image to ECR
         run: |
-          docker push 637423603914.dkr.ecr.us-east-1.amazonaws.com/queue-service:latest
+          docker push ${{ secrets.ECR_URL }}:latest
 
   deploy:
     name: Deploy to Kubernetes
