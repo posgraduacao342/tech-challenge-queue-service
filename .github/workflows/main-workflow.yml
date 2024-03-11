@@ -95,7 +95,7 @@ jobs:
           echo "apiVersion: v1" > pipeline/application/secret.yaml
           echo "kind: Secret" >> pipeline/application/secret.yaml
           echo "metadata:" >> pipeline/application/secret.yaml
-          echo "  name: tech-challenge-account-secret" >> pipeline/application/secret.yaml
+          echo "  name: tech-challenge-queue-secret" >> pipeline/application/secret.yaml
           echo "type: Opaque" >> pipeline/application/secret.yaml
           echo "data:" >> pipeline/application/secret.yaml
           echo "  HTTP_SOURCE_ACCOUNT: $HTTP_SOURCE_ACCOUNT" >> pipeline/application/secret.yaml
