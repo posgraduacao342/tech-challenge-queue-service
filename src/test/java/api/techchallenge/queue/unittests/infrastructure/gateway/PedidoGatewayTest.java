@@ -5,7 +5,7 @@ import api.techchallenge.queue.builders.PedidoMongoEntityBuilder;
 import api.techchallenge.queue.domain.enums.StatusPedido;
 import api.techchallenge.queue.domain.exceptions.NotFoundException;
 import api.techchallenge.queue.infrastructure.entities.PedidoMongoEntity;
-import api.techchallenge.queue.infrastructure.gateways.PedidoGateway;
+import api.techchallenge.queue.infrastructure.gateways.database.PedidoGateway;
 import api.techchallenge.queue.infrastructure.repositories.PedidoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -132,7 +132,7 @@ class PedidoGatewayTest {
         // Arrange
         var data = LocalDate.of(2024, 1, 24);
         var pedido = PedidoMongoEntityBuilder.build();
-        Mockito.when(repository.findTopByDataRecebimentoBetweenOrderByPosicaoFila(
+        Mockito.when(repository.findTopByDataRecebimentoBetweenOrderByPosicaoFilaDesc(
                     LocalDateTime.of(2024, 1, 24,0,0,0,0),
                     LocalDateTime.of(2024, 1, 25,0,0,0,0))
                 )
@@ -150,7 +150,7 @@ class PedidoGatewayTest {
     void testUltimaPosicaoFilaPorData_returnSuccessResult0() {
         // Arrange
         var data = LocalDate.of(2024, 1, 24);
-        Mockito.when(repository.findTopByDataRecebimentoBetweenOrderByPosicaoFila(
+        Mockito.when(repository.findTopByDataRecebimentoBetweenOrderByPosicaoFilaDesc(
                         LocalDateTime.of(2024, 1, 24,0,0,0,0),
                         LocalDateTime.of(2024, 1, 25,0,0,0,0))
                 )

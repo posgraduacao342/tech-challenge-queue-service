@@ -21,6 +21,10 @@ services:
     image: mongo:latest
     container_name: mongodb
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: mongo
+      MONGO_INITDB_DATABASE: pedidos
     ports:
       - '27017:27017'
     networks:

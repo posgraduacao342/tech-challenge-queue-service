@@ -6,6 +6,7 @@ import api.techchallenge.queue.domain.entities.Pedido;
 import api.techchallenge.queue.domain.entities.UseCaseResponse;
 import api.techchallenge.queue.domain.entities.UseCaseResponseNoData;
 import api.techchallenge.queue.domain.enums.StatusPedido;
+import api.techchallenge.queue.domain.ports.ClienteGatewayPort;
 import api.techchallenge.queue.domain.usecases.AtualizarStatusPedidoUseCase;
 import api.techchallenge.queue.domain.usecases.BuscarFilaDePedidosUseCase;
 import api.techchallenge.queue.domain.usecases.BuscarPedidosUseCase;

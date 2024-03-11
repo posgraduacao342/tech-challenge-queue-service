@@ -1,0 +1,17 @@
+{
+  "id": "8c6775cc-eb37-4e4a-94dd-5919d82c3135",
+  "dataRecebimento": "2024-01-25T14:00:00.000",
+  "itens": [
+    {
+      "id": "32c3832f-f8ef-47a1-ac60-06a1f3606eba",
+      "idProduto": "8c6775cc-eb37-4e4a-94dd-5919d82c3135",
+      "nome": "hamburger",
+      "descricao": "hamburguer",
+      "categoria": "LANCHE",
+      "observacoes": "Mal passado",
+      "quantidade": 1
+    }
+  ],
+  "status" : "EM_PREPARACAO",
+  "posicaoFila" : 1
+}

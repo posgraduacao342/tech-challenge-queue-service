@@ -1,6 +1,5 @@
 package api.techchallenge.queue.infrastructure.entities;
 
-import api.techchallenge.queue.domain.entities.Item;
 import api.techchallenge.queue.domain.entities.Pedido;
 import api.techchallenge.queue.domain.enums.StatusPedido;
 import lombok.*;
@@ -8,7 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 @Document(collection = "pedidos")
@@ -21,20 +19,20 @@ import java.util.UUID;
 public class PedidoMongoEntity {
     @MongoId
     private UUID id;
+    private UUID clienteId;
     private LocalDateTime dataRecebimento;
-    private List<Item> itens;
     private StatusPedido status;
     private Long posicaoFila;
 
     public PedidoMongoEntity(Pedido pedido){
         id = pedido.getId();
+        clienteId = pedido.getClienteId();
         dataRecebimento = pedido.getDataRecebimento();
-        itens = pedido.getItens();
         status = pedido.getStatus();
         posicaoFila = pedido.getPosicaoFila();
     }
 
     public Pedido toDomain(){
-        return new Pedido(id, dataRecebimento, itens, status, posicaoFila);
+        return new Pedido(id, clienteId,dataRecebimento, status, posicaoFila);
     }
 }

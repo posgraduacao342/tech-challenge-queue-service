@@ -5,7 +5,7 @@ import api.techchallenge.queue.domain.dtos.request.IncluirPedidoRequest;
 import api.techchallenge.queue.domain.dtos.response.IncluirPedidoResponse;
 import api.techchallenge.queue.domain.entities.UseCaseResponse;
 import api.techchallenge.queue.domain.usecases.IncluirPedidoUseCase;
-import api.techchallenge.queue.infrastructure.gateways.PedidoGateway;
+import api.techchallenge.queue.infrastructure.gateways.database.PedidoGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -14,8 +14,9 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.security.InvalidParameterException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class IncluirPedidoUseCaseTest {
 
@@ -54,13 +55,7 @@ class IncluirPedidoUseCaseTest {
         IncluirPedidoRequest request = IncluirPedidoRequestBuilder.build();
         Mockito.when(gateway.pedidoExiste(Mockito.any())).thenReturn(true);
 
-        // Act
-        UseCaseResponse<IncluirPedidoResponse> response = useCase.execute(request);
-
-        // Assert
-        assertNotNull(response);
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatus());
-        assertEquals("Pedido já existe.", response.getErrorMessage());
-        Mockito.verify(gateway, Mockito.never()).incluirPedido(Mockito.any());
+        // Act/Assert
+        assertThrows(InvalidParameterException.class, () -> useCase.execute(request));
     }
 }

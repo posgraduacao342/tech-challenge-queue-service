@@ -12,7 +12,7 @@ public class PedidoBuilder {
     public static Pedido build(long posicaoFila){
         return Pedido.builder()
                 .id(UUID.randomUUID())
-                .itens(ItemBuilder.buildList())
+                .clienteId(UUID.randomUUID())
                 .dataRecebimento(LocalDateTime.now())
                 .posicaoFila(posicaoFila)
                 .status(StatusPedido.EM_PREPARACAO)
