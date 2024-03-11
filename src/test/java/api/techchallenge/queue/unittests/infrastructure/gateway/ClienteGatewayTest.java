@@ -21,6 +21,18 @@ class ClienteGatewayTest {
     private ClienteGateway clienteGateway;
 
     @Test
+    void testConstructor() {
+        // Arrange
+        var baseUri = "http://teste.com/";
+
+        // Act
+        var clienteGateway = new ClienteGateway(baseUri);
+
+        // Assert
+        Assertions.assertNotNull(clienteGateway);
+    }
+
+    @Test
     void testBuscarClientePorId() {
         // Arrange
         Cliente cliente = ClienteBuilder.build();

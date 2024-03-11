@@ -41,7 +41,7 @@ class AtualizarStatusPedidoUseCaseTest {
     @EnumSource(StatusPedido.class)
     void testExecute(StatusPedido statusPedido) {
         // Arrange
-        var request = new AtualizarStatusPedidoRequest(UUID.randomUUID(), StatusPedido.FINALIZADO);
+        var request = new AtualizarStatusPedidoRequest(UUID.randomUUID(), statusPedido);
         var pedido = PedidoBuilder.build();
         pedido.setId(request.getId());
         pedido.setStatus(statusPedido);
