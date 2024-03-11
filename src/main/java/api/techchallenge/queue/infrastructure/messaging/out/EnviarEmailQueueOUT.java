@@ -2,8 +2,6 @@ package api.techchallenge.queue.infrastructure.messaging.out;
 
 import api.techchallenge.queue.domain.ports.out.EnviarEmailQueueOUTPort;
 import com.google.gson.Gson;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +11,8 @@ import java.util.HashMap;
 @Service
 public class EnviarEmailQueueOUT implements EnviarEmailQueueOUTPort {
     private final RabbitTemplate rabbitTemplate;
-    private static final String exchange = "amq.direct";
-    private static final String routingKey = "enviar.email";
+    private static final String EXCHANGE = "amq.direct";
+    private static final String ROUTING_KEY = "enviar.email";
 
     @Autowired
     public EnviarEmailQueueOUT(RabbitTemplate rabbitTemplate) {
@@ -30,6 +28,6 @@ public class EnviarEmailQueueOUT implements EnviarEmailQueueOUTPort {
         hashmap.put("assunto", assunto);
         hashmap.put("texto", texto);
 
-        rabbitTemplate.convertAndSend(exchange, routingKey, gson.toJson(hashmap));
+        rabbitTemplate.convertAndSend(EXCHANGE, ROUTING_KEY, gson.toJson(hashmap));
     }
 }
