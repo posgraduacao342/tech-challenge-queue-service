@@ -26,13 +26,6 @@ public class PedidoController {
     private final BuscarFilaDePedidosUseCase buscarFilaDePedidosUseCase;
     private final IncluirPedidoUseCase incluirPedidoUseCase;
     private final AtualizarStatusPedidoUseCase atualizarStatusPedidoUseCase;
-    private final ClienteGatewayPort clienteGateway;
-
-    @GetMapping("/testeCliente")
-    public ResponseEntity<UseCaseResponseNoData> testarCliente() {
-        var response = clienteGateway.buscarClientePorId(UUID.fromString("8ed242f4-91f8-47c1-8140-25b9f335abf6")).block();
-        return new ResponseEntity<>(new UseCaseResponseNoData().getStatus());
-    }
 
     @GetMapping
     public ResponseEntity<UseCaseResponse<List<Pedido>>> buscarPedidos() {

@@ -12,12 +12,9 @@ import java.util.HashMap;
 
 @Service
 public class EnviarEmailQueueOUT implements EnviarEmailQueueOUTPort {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
     private final RabbitTemplate rabbitTemplate;
-
-    private final String exchange = "amq.direct";
-    private final String routingKey = "enviar.email";
+    private static final String exchange = "amq.direct";
+    private static final String routingKey = "enviar.email";
 
     @Autowired
     public EnviarEmailQueueOUT(RabbitTemplate rabbitTemplate) {
