@@ -1,5 +1,6 @@
 package api.techchallenge.queue.infrastructure.messaging.in;
 
+import api.techchallenge.queue.application.config.RabbitMQConfig;
 import api.techchallenge.queue.domain.dtos.request.AtualizarStatusPedidoRequest;
 import api.techchallenge.queue.domain.enums.StatusPedido;
 import api.techchallenge.queue.domain.exceptions.NotFoundException;
@@ -32,7 +33,7 @@ public class PagamentoEstornadoQueueIN implements PagamentoAprovadoQueueINPort {
 
     private final Gson gson = new Gson();
 
-    @RabbitListener(queues = "queue_pagamento_estornado")
+    @RabbitListener(queues = RabbitMQConfig.PAGAMENTO_ESTORNADO_QUEUE)
     @Override
     public void receive(@Payload String message) throws InvalidParameterException, NotFoundException {
         try {

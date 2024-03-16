@@ -1,5 +1,6 @@
 package api.techchallenge.queue.infrastructure.messaging.in;
 
+import api.techchallenge.queue.application.config.RabbitMQConfig;
 import api.techchallenge.queue.domain.dtos.request.IncluirPedidoRequest;
 import api.techchallenge.queue.domain.ports.in.PagamentoAprovadoQueueINPort;
 import api.techchallenge.queue.domain.usecases.IncluirPedidoUseCase;
@@ -11,9 +12,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
-import java.security.InvalidParameterException;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -31,7 +30,7 @@ public class PagamentoAprovadoQueueIN implements PagamentoAprovadoQueueINPort {
 
     private final Gson gson = new Gson();
 
-    @RabbitListener(queues = "queue_pagamento_aprovado")
+    @RabbitListener(queues = RabbitMQConfig.PAGAMENTO_APROVADO_QUEUE)
     @Override
     public void receive(@Payload String message){
         try {
